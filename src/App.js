@@ -103,7 +103,7 @@ class App extends Component {
 		this.setState(previousState => {
 			const { items } = previousState;
 			const filteredItems = items.filter( item => item.id !== task.id);
-			task.status = (task.status === 'To Do') ? 'Done' : 'To Do';
+			task.status = (task.status === 'Gurthu Pettuko') ? 'Aiepai' : 'To Do';
 			filteredItems.push(task);
 			return {
 				items: filteredItems.sort(sortBy('id'))
@@ -169,7 +169,7 @@ class App extends Component {
 			slideIndex: value,
 		}, function stateUpdateComplete() {
 			// Fix scroll in swipe transitions
-			window.scrollTo(0, 0);
+			window.scrollTo(10, 10);
 		});
 	};
 
@@ -233,8 +233,8 @@ class App extends Component {
 	render() {
 		const { items = [] }  = this.state;
 		const columns = [
-			{ title: 'To Do', items: items.filter( item => item.status === 'To Do'), icon: <TodoIcon />},
-			{ title: 'Done', items: items.filter( item => item.status === 'Done'), icon: <CheckIcon />},
+			{ title: 'Gurthu Pettuko', items: items.filter( item => item.status === 'To Do'), icon: <TodoIcon /> , color:'black'},
+			{ title: 'Aiepai', items: items.filter( item => item.status === 'Done'), icon: <CheckIcon />},
 			{ title: 'All', items, icon: <ListIcon />},
 		];
 		return (
@@ -242,32 +242,33 @@ class App extends Component {
 				<div className="App">
 					{/* Clear Tasks Confirmation Dialog */}
 					<ConfirmDialog
-						title="Clear All Tasks"
-						message={'Are you sure you want to remove all tasks from the App?'}
+						title="Nannu Nokkaku"
+						message={'Anni potai ra babu chusuko'}
 						onCancel={this.handleDialogClose}
 						onConfirm={this.clearTasks}
 						open={this.state.dialogOpen}
 					/>
 					<AppBar
-						title={<span style={{color: 'white'}}>To-Do List</span>}
+						title={<span style={{color: 'black'}}>To-Do List</span>}
 						showMenuIconButton={false}
-						style={{backgroundColor: 'rgb(0, 151, 167)', position: 'fixed', zIndex: 9999,}}
+						style={{backgroundColor: 'white', position: 'fixed', zIndex: 9999,}}
 					/>
 					<div className="App-container">
 						<div style={{position: 'fixed', width: '100%', paddingTop: 64, zIndex: 8888, backgroundColor: 'white'}}>
 							<TextField
-								hintText="Type task"
-								floatingLabelText="Add Task"
+								hintText="Cheppu Ra "
+								floatingLabelText="Cheppu Ra Babu"
 								ref={(taskInput) => {
 									this.taskInput = taskInput;
 								}}
 								disabled={this.state.removeMode}
-								style={{margin: 10, width: '60%', maxWidth: 300}}
+								style={{ margin: 50, width: '100%', maxWidth: 200, backgroundColor: '#f2f2f2', borderRadius: 25 }}
+
 								onChange={this.handleTextFieldChange}
 								onKeyDown={this.keyPress}
 							/>
 							<RaisedButton
-								style={{margin: 10, width: '30%', maxWidth: 56}}
+								style={{margin: 0, width: '10%', maxWidth: 10}}
 								label="Create"
 								onClick={this.addTask}
 								disabled={this.state.submitDisabled} />
@@ -297,7 +298,7 @@ class App extends Component {
 							{this.state.removeMode &&
 								<div className="remove-mode">
 									<RaisedButton
-									label="Delete All Tasks"
+									label="Nannu nokkaku"
 									secondary={true}
 									onClick={this.handleDialogOpen}
 									/>
@@ -342,6 +343,6 @@ class App extends Component {
 			</MuiThemeProvider>
 		);
 	}
-}
+}  
 
 export default App;
